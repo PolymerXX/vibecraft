@@ -16,12 +16,13 @@ Vibecraft uses your own local Claude Code instances — no files or prompts are 
 
 ## Requirements
 
-- **macOS or Linux** (Windows not supported - hooks require bash)
 - **Node.js** 18+
-- **jq** - for hook scripts (`brew install jq` / `apt install jq`)
-- **tmux** - for session management (`brew install tmux` / `apt install tmux`)
+- **macOS/Linux:** jq, tmux (`brew install jq tmux` / `apt install jq tmux`)
+- **Windows:** PowerShell 5.1+ (included with Windows 10/11)
 
 ## Quick Start
+
+### macOS / Linux
 
 ```bash
 # 1. Install dependencies
@@ -35,16 +36,38 @@ npx vibecraft setup
 npx vibecraft
 ```
 
-Open http://localhost:4003 and use Claude Code normally. You'll see Claude move around the workshop as it uses tools.
+### Windows
 
-**From source:**
+> **⚠️ Windows 用户重要提示**: Windows 不支持 tmux。请使用 **Managed Sessions** 模式。
+> 详见: [WINDOWS_QUICKSTART.md](WINDOWS_QUICKSTART.md)
+
+```powershell
+# 1. Clone or download the project
+git clone https://github.com/nearcyan/vibecraft
+cd vibecraft
+
+# 2. Install npm dependencies
+npm install
+
+# 3. Configure hooks (one time)
+powershell -ExecutionPolicy Bypass -File scripts/setup-windows.ps1
+
+# 4. Start the dev server
+npm run dev
+```
+
+Open http://localhost:4002 (dev) or http://localhost:4003 (production) and use Claude Code normally. You'll see Claude move around the workshop as it uses tools.
+
+**From source (all platforms):**
 ```bash
 git clone https://github.com/nearcyan/vibecraft
 cd vibecraft && npm install && npm run dev
 # Opens on http://localhost:4002
 ```
 
-**To uninstall:** `npx vibecraft uninstall` (removes hooks, keeps your data)
+**To uninstall:**
+- macOS/Linux: `npx vibecraft uninstall`
+- Windows: `powershell -ExecutionPolicy Bypass -File scripts/setup-windows.ps1 -Uninstall`
 
 ## Browser Control (Optional)
 
