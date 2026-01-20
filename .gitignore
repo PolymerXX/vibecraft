@@ -36,3 +36,10 @@ npm-debug.log*
 bin/vibecraft
 scripts/test-*.sh
 todo.txt
+
+# Temporary files and backups
+*.backup
+*.bak
+test-*.js
+diagnose.js
+2026-*.txt
