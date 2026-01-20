@@ -23,6 +23,10 @@ export default defineConfig({
         target: `ws://localhost:${serverPort}`,
         ws: true,
       },
+      // Proxy all API endpoints to backend server
+      '^/(health|config|stats|event|prompt|sessions|tiles|voice|cancel)': {
+        target: `http://localhost:${serverPort}`,
+      },
       '/api': {
         target: `http://localhost:${serverPort}`,
         rewrite: (path) => path.replace(/^\/api/, ''),
