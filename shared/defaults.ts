@@ -28,9 +28,6 @@ export const DEFAULTS = {
 
   /** Max events to keep in memory */
   MAX_EVENTS: 1000,
-
-  /** tmux session name */
-  TMUX_SESSION: 'claude',
 } as const
 
 export type Defaults = typeof DEFAULTS
